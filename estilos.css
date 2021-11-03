@@ -1,0 +1,513 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+
+/*
+las dimenciones de nuestra clase contenedor
+*/
+.contenedor{
+    max-width: 1200px;
+    overflow: hidden;
+    margin: auto;
+    padding: 60px 0;
+}
+/*
+estilos y colores para la imagen de nuestro encabezado
+*/
+.header{
+    height: 100vh;
+    /* 02 */
+    background-image: linear-gradient(to right, #001b4d46 0%, rgba(0, 0, 0, 0.267) 100%), url(img/tecnm.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    
+}
+
+/*
+estilos y dimenciones para las letras sobrepuesta de la imagen del encabezado
+*/
+.head{
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    color: #ddd;
+}
+
+/*
+en la clase amburguer tenemos el icono del menu flotante aqui se le da color, fondo y dimencion
+*/
+.hamburguer{
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    background: #fff;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, .5);
+}
+
+/*
+aqui tenemos la transparecnia , el fondo de la imagen y la altura y anchura que ocupa el menu
+*/
+.menu-navegacion{
+    position: fixed;
+    top: 0;
+    width: 30vw;
+    height: 100%;
+    /* background-image: linear-gradient(to top, #fbc2eb 0%, #a6c0ee 100%); */
+    /* 02 */
+    background-image: linear-gradient(to top, #1f293f 0%, #272050 100%);
+    /* 028 */
+    background-image: linear-gradient(135deg, #0e173f 0%, #03018bc5 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    right: 0;
+    transform: translateX(110%);
+    transition:transform 0.3s ease-in-out;
+    box-shadow: 0 0 6px rgba(0, 0, 0, .5);
+}
+
+.spread{
+    transform: translateX(0);
+}
+
+.menu-navegacion a{
+    color: #fff;
+    text-decoration: none;
+}
+
+
+/*
+Estilos de la clase titulo
+*/
+.titulo{
+    font-size: 60px;
+    margin-bottom: 15px;
+}
+
+.copy{
+
+    font-weight: 300;
+    font-size: 25px;
+    color: #0100d0;
+    font-family: fantasy;
+}
+
+.copy2{
+    text-align: justify;  
+    margin: 20px; 
+    line-height: 1.5em; /*interlineado*/
+    font-size: 20px;
+    color: #000000;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+/* Services */
+.subtitulo{
+    color: #0000eb;
+    font-size: 40px;
+    text-align: center;
+    font-weight: 300;
+    margin-bottom: 30px;
+    border-top-style: hidden;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+    
+    
+}
+
+.Referencia{
+    color: #f4f5f7;
+    font-size: 40px;
+    text-align: center;
+    font-weight: 300;
+    margin-bottom: 30px;
+}
+
+/*
+estilos y dimenciones para las letras de tutorias
+*/
+.contenedor-servicio{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.contenedor-servicio img{
+    width: 40%;
+}
+
+.checklist-servicio{
+    width: 45%;
+}
+
+.service{
+    margin-bottom: 20px;
+}
+
+.n-service{
+    margin-bottom: 7px;
+    color: #1081a3;
+}
+/*
+estilos y dimenciones para los numeros que aparecen en el programa institucional de las turtorias
+*/
+.number{
+    display: inline-block;
+    /* 02 */
+    background-image: linear-gradient(to top, #0407b3 0%, #0111a1 100%);
+    line-height: 30px;
+    text-align: center;
+    border-radius: 50%;
+    margin-right: 5px;
+    width: 30px;
+    height: 30px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.gallery{
+    background: #f2f2f2;
+}
+
+.contenedor-galeria{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 30px;
+}
+
+.img-galeria{
+    width: 30%;
+    display: block;
+    margin-bottom: 25px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, .6);
+    cursor: pointer;
+}
+
+.imagen-light{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.534);
+    transform: translate(100%);
+    transition: transform .2s ease-in-out;
+}
+
+.agregar-imagen{
+    width: 60%;
+    transform: scale(0);
+    border-radius: 10px;
+    transition: transform .3s .2s;
+}
+
+.showImage{
+    transform: scale(1);
+}
+
+.show{
+    transform: translate(0);
+}
+
+.close{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    cursor: pointer;
+}
+
+.experts{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.cont-expert{
+    width: 30%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.cont-expert img{
+    display: block;
+    margin: auto;
+    width: 80%;
+}
+
+.n-expert{
+    width: 100%;
+    display: inline-block;
+    margin-top: 20px;
+    font-weight: 400;
+}
+
+footer{
+    background: #00146b;
+    padding-bottom: 0.1px;
+}
+/*
+mostrar el furer arreglado para no destrior los estilos,justifica el texto, y agrega un padding de 60 pixeles
+*/
+.footer-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+
+
+.contact-us{
+    width: 40%;
+    border-top-style: hidden;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #fff;
+    margin-inline-start: 0.5mm;
+    
+}
+
+.brand{
+    font-weight: 500;
+    font-size: 40px;
+}
+
+.brand+p{
+    font-weight: 500;
+}
+/*
+Estilos para la clase social media
+*/
+.social-media{
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.TECHMEX-socialmedias{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/*
+estilos y dimenciones para los iconos de social media
+*/
+.social-media-icon{
+    display: inline-block;
+    margin-left: 20px;
+    width: 60px;
+    height: 60px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;
+}
+
+.social-media-icon2{
+    display: inline-block;
+    margin-left: 20px;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #fff;
+    border-radius: 30%;
+    text-align: center;
+    color: #fff;
+}
+
+/*
+tamaño de fuente del icnono para las redes sociales
+*/
+.social-media-icon i{
+    font-size: 30px;
+    line-height: 60px;
+}
+/*
+estilos para mis redes sociales 
+*/
+.social-media-icon2 i{
+    font-size: 30px;
+    line-height: 40px;
+}
+
+.line{
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    height: 2px;
+    background: #fff;
+    margin-bottom: 220px;
+}
+
+.social-media-icon:hover{
+    background: #fff;
+    color:#080079;
+}
+
+.social-media-icon2:hover{
+    background: #fff;
+    color:#080079;
+}
+
+.tec{
+    margin-top: 30px;
+}
+@media screen and (max-width: 800px){
+    .menu-navegacion{
+        width: 50vw;
+    }
+
+    .titulo{
+        font-size: 40px;
+    }
+/*
+dimencionar nuestra clase contenedor-servicio
+*/
+    .contenedor-servicio img{
+        width: 80%;
+        margin-bottom: 40px;
+        
+    }
+/*
+dimencionar la anchura de la imagen de listado
+*/    
+    .checklist-servicio{
+        width: 80%;
+    }
+
+    .service{
+        margin-bottom: 30px;
+    }
+/*
+dimencionar la anchura de la imagenes de la galeria
+*/
+    .img-galeria{
+        width: 45%;
+    }
+ /*
+ cuando abramos la imagen nos la amplie al 80%
+ */
+    .agregarImagen{
+        width: 80%;
+    }
+
+    
+    .cont-expert{
+        width: 80%;
+    }
+    
+    .footer-content{
+        justify-content: center;
+    }
+
+    .social-media{
+        width: 80%;
+        justify-content: space-evenly;
+    }
+
+    .TECHMEX-socialmedias{
+        width: 80%;
+        justify-content: space-evenly;
+    }
+    .social-media-icon{
+        margin-left: 0;
+    }
+    .social-media-icon2{
+        margin-left: 0;
+    }
+    .line{
+        margin-bottom: 490px;
+    }
+
+    .contact-us{
+        text-align: center;
+        width: 80%;
+        margin-bottom: 40px;
+    }
+    
+    
+}
+
+
+@media screen and (max-width: 500px){
+    .menu-navegacion{
+        width: 65vw;
+    }
+
+    .hamburguer{
+        top: 20px;
+        right: 20px;
+    }
+
+    .titulo{
+        font-size: 30px;
+    }
+
+    .subtitulo{
+        font-size: 30px;
+    }
+
+    .img-galeria{
+        width: 95%;
+    }
+    
+    .agregar-imagen{
+        width: 90%;
+    }
+
+    .social-media{
+        width: 100%;
+        justify-content: space-evenly;
+    }
+    .TECHMEX-socialmedias{
+        width: 100%;
+        justify-content: space-evenly;
+    }
+
+    .social-media-icon{
+        margin-left: 0;
+    }
+    .social-media-icon2{
+        margin-left: 0;
+    }
+    .line{
+        margin-bottom: 390px;
+    }
+
+    .contact-us{
+        text-align: center;
+        width: 95%;
+        margin-bottom: 40px;
+    }
+    
+    
+}

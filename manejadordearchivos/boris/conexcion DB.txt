@@ -1,0 +1,206 @@
+configura la conexion de la base de datos:
+
+
+<?php 
+$dsn = 'mysql:dbname=migatoboris;host=localhost'; //indicamos el GDBS(Lenguaje) de la DB,el nombre de la DB y el host
+$user = 'root'; //usuario de la 
+$password = '';//contraseña del usuario
+
+ 
+try //Excepcion de errores 
+{
+	$pdo = new PDO($dsn,$user,$password); //esta clase u objeto nos permite abstraer la conexion antiua y una capa de seguridad
+	$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+}
+catch(PDOException $e)
+{
+	echo "PDO error".$e->getMessage();
+	die();
+}
+
+?>
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
+Registro de un usuario:
+
+
+<?php
+session_start();
+require_once('config.php');
+
+if (isset($_POST['submit'])) {
+    if (isset($_POST['nombre'], $_POST['apellido'], $_POST['email'], $_POST['password']) && !empty($_POST['nombre']) && !empty($_POST['apellido']) && !empty($_POST['email']) && !empty($_POST['password'])) {
+        $firstName = trim($_POST['nombre']);
+        $lastName = trim($_POST['apellido']);
+        $email = trim($_POST['email']);
+        $password = trim($_POST['password']);
+        //$hashPassword = $password;
+        $options = array("cost" => 4);
+        $hashPassword = password_hash($password, PASSWORD_BCRYPT, $options); //encripta contraseñas SSH
+        $date = date('Y-m-d H:i:s'); //fecha del dia que almacenara en la DB cuando incerte un user
+
+        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $sql = 'select * from usuarios where email = :email';
+            $stmt = $pdo->prepare($sql);
+            $p = ['email' => $email];
+            $stmt->execute($p); //mostrar los datos de la base de datos con la que nos hayamois conectado
+
+            if ($stmt->rowCount() == 0) {
+                $sql = "insert into usuarios (nombre, apellido, email, `password`, created_at,updated_at) values(:vnombre,:vapellido,:email,:pass,:created_at,:updated_at)";
+
+                try {
+                    $handle = $pdo->prepare($sql);
+                    $params = [
+                        ':vnombre' => $firstName,
+                        ':vapellido' => $lastName,
+                        ':email' => $email,
+                        ':pass' => $hashPassword,
+                        ':created_at' => $date,
+                        ':updated_at' => $date
+                    ];
+
+                    $handle->execute($params);
+
+                    $success = 'Usuario creado correctamente!!';
+                } catch (PDOException $e) {
+                    $errors[] = $e->getMessage();
+                }
+            } else {
+                $valFirstName = $firstName;
+                $valLastName = $lastName;
+                $valEmail = '';
+                $valPassword = $password;
+
+                $errors[] = 'el Email ya esta registrado';
+            }
+        } else {
+            $errors[] = "el Email no es valido";
+        }
+    } else {
+        if (!isset($_POST['nombre']) || empty($_POST['nombre'])) {
+            $errors[] = 'el nombre es requerido';
+        } else {
+            $valFirstName = $_POST['apellido'];
+        }
+        if (!isset($_POST['apellido']) || empty($_POST['apellido'])) {
+            $errors[] = 'el apellido es requerido';
+        } else {
+            $valLastName = $_POST['apellido'];
+        }
+
+        if (!isset($_POST['email']) || empty($_POST['email'])) {
+            $errors[] = 'Email es requerido';
+        } else {
+            $valEmail = $_POST['email'];
+        }
+
+        if (!isset($_POST['password']) || empty($_POST['password'])) {
+            $errors[] = 'el Password es requerido';
+        } else {
+            $valPassword = $_POST['password'];
+        }
+    }
+}
+?>
+
+
+
+
+
+
+========================================================================================================
+
+
+
+ <?php //control de errores
+                                    if (isset($errors) && count($errors) > 0) {
+                                        foreach ($errors as $error_msg) {
+                                            echo '<div class="alert alert-danger">' . $error_msg . '</div>';
+                                        }
+                                    }
+
+                                    if (isset($success)) {
+
+                                        echo '<div class="alert alert-success">' . $success . '</div>';
+                                    }
+                                    ?>
+
+
+
+===============================================================================================================
+
+
+login:
+
+
+<?php
+session_start();
+require_once('config.php');
+//sirve para comprobar si existe el correo y password de una persona
+if (isset($_POST['submit'])) {
+    if (isset($_POST['email'], $_POST['password']) && !empty($_POST['email']) && !empty($_POST['password'])) {
+        $email = trim($_POST['email']);
+        $password = trim($_POST['password']);
+
+        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $sql = "select * from usuarios where email = :email ";
+            $handle = $pdo->prepare($sql);
+            $params = ['email' => $email];
+            $handle->execute($params); //mostrar los datos 
+            if ($handle->rowCount() > 0) {//verificar por celda en la BD
+                $getRow = $handle->fetch(PDO::FETCH_ASSOC); 
+                if (password_verify($password, $getRow['password'])) { //validacion del password
+                    unset($getRow['password']);
+                    $_SESSION = $getRow;
+                    header('location:dashboard.php'); //cuando valide el usuario nos redireccionara al dashboard
+                    exit();
+                } else {
+                    $errors[] = "Error en  Email o Password";
+                }
+            } else {
+                $errors[] = "Error Email o Password";
+            }
+        } else {
+            $errors[] = "Email no valido";
+        }
+    } else {
+        $errors[] = "Email y Password son requeridos";
+    }
+}
+?>
+
+
+
+
+==============================================================================================================
+
+
+ <?php //control de errores
+                                    if (isset($errors) && count($errors) > 0) {
+                                        foreach ($errors as $error_msg) {
+                                            echo '<div class="alert alert-danger">' . $error_msg . '</div>';
+                                        }
+                                    }
+                                    ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

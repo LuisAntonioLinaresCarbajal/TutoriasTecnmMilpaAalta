@@ -1,0 +1,709 @@
+:root{
+    --color1:#202022;
+    --size1:35px;
+    --size2:17px;
+}
+
+*{
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+	font-family: 'Montserrat', sans-serif;
+}
+body{
+	background: #fff;
+	overflow-x: hidden;
+}
+
+/** Navegation Menu **/
+header{
+	width: 100%;
+	position: relative;
+}
+.nav{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 70px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background: transparent;
+	z-index: 999;
+}
+.logo{
+	width: 300px;
+	height: auto;
+	padding:10px 50px;
+}
+.logo img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+/** Bar icon **/
+.bar-icon{
+	position: relative;
+	width: 70px;
+	height: 70px;
+	margin-right: 50px;
+	cursor: pointer;
+	transition: 0.5s;
+}
+.bar-icon span{
+	width: 40px;
+	height: 4px;
+	background: #fff;
+	position: absolute;
+	transition: 0.5s;
+	transform: translateX(-50%);
+}
+.bar-icon span:nth-child(1){
+    top: 30%;
+    left: 50%;
+    background: #fff;
+}
+.bar-icon span:nth-child(2){
+    bottom: 30%;
+    left: 50%;
+    background: #fff;
+}
+.bar-icon.active span:nth-child(1){
+	top: 50%;
+	left: 50%;
+	width: 60%;
+	transform: translate(-50%, -50%) rotate(125deg);
+	background: var(--color1);
+}
+.bar-icon.active span:nth-child(2){
+	top: 50%;
+	left: 50%;
+	width: 60%;
+	transform: translate(-50%, -50%) rotate(225deg);
+	background: var(--color1);
+}
+.bar-icon:before{
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 40px;
+	height: 4px;
+	background: #fff;
+	transition: 0.5s;
+}
+.bar-icon.active:before{
+	width: 0;
+	height: 0;
+}
+/** bar-icon **/
+
+.container-list{
+	position: absolute;
+	top: 70px;
+	left: 0;
+	width: 0%;
+	overflow: hidden;
+	height: 89.4vh;
+	background: #dfe3f4;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+}
+.container-list .list li{
+	list-style: none;
+	padding:10px 0px;
+}
+.container-list .list li a{
+	position: relative;
+	text-decoration: none;
+	font-size: 2.5em;
+	color: #ddd;
+	font-weight: 700;
+}
+.container-list .list li a:before{
+	content: attr(data-text);
+	position: absolute;
+	top: -2px;
+	width: 100%;
+	color: #0b1f4e;
+	overflow: hidden;
+	white-space: nowrap;
+	transition: 0.5s ease-in-out;
+}
+.container-list .list:hover li a:before{
+	width: 0%;
+}
+.container-list .list li:hover a:before{
+	width: 100%;
+}
+
+/** IMG HEADER **/
+.img-header{
+	position: relative;
+	background:linear-gradient(to top, rgba(4, 5, 68, 0.445) 0%, rgba(18, 0, 105, 0.164) 100%), url(../img/tecnologico.png);
+	background-attachment: fixed;
+	background-position: center;
+	background-size:contain ;
+	width: 100%;
+	height: 78.9vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+/*.degradade{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background:rgba(2, 18, 107, 0.432);
+}
+*/
+.welcome{
+	position: absolute;
+	padding:50px;
+	z-index: 10;
+}
+.welcome h1{
+	font-size: 4em;
+	color: #fff;
+	font-weight: 300;
+}
+
+/** IMG HEADER **/
+
+/** Navegation Menu **/
+
+/** Acerca de **/
+.acerca-de{
+	width: 100%;
+	padding: 50px;
+	margin-top: 100px;
+}
+.acerca-de .left{
+	width: 100%;
+	display: flex;
+	align-items: center;
+	margin-bottom: 70px;
+}
+.acerca-de .right{
+	width: 100%;
+	display: flex;
+	align-items: center;
+}
+.acerca-de .info{
+	width: 70%;
+	padding:0px 30px;
+}
+.acerca-img{
+	width: 40%;
+	height: 40%;
+}
+.acerca-img img{
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	border-radius: 5px;
+}
+.acerca-de .info h2{
+	margin:15px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 30px;
+	color:#0b1f57;
+}
+.acerca-de .info p{
+	font-size: 17px;
+	color: var(--color1);
+	text-align: justify;
+	line-height: 1.5;
+	font-family: 'Times New Roman', Times, serif;
+	margin: 10px 0px;
+}
+.read-more{
+	display: flex;
+	justify-content: center;
+	margin-top: 50px;
+}
+.read-more > a{
+	width: 200px;
+	height: 71px;
+	background: #fff;
+	text-decoration: none;
+	color: var(--color1);
+	font-size: 20px;
+	text-align: center;
+	transition: 0.5s ease-in-out;
+	border:1px solid var(--color1);
+	border-radius: 10px;
+	padding:12px;
+}
+.read-more > a:hover{
+	background: var(--color1);
+	color: #fff;
+	border:1px solid #fff;
+}
+
+/** Acerca de **/
+
+/** Team **/
+.team-pets{
+	width: 100%;
+	padding:50px 0px;
+	background: #fff;
+}
+.team-pets h2{
+	display: flex;
+	justify-content: center;
+	font-family: Arial, Helvetica, sans-serif;
+	margin:50px 0px;
+	font-size: 50px;
+	color: #03114d;
+	font-weight: 300;
+}
+.content-cards{
+	width: 100%;
+	margin:auto;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+.content-cards .card{
+	position: relative;
+	width: 350px;
+	height: 450px;
+	background: #000;
+	margin:20px;
+	border-radius: 10px;
+	cursor: pointer;
+}
+.content-cards .card .card-content{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	background: #000;
+	border-radius: 10px;
+	padding:10px;
+}
+.content-cards .card .card-content h4{
+	color: #fff;
+	margin:20px 0px;
+	font-size: 17px;
+}
+.content-cards .card .card-content p{
+	color: #fff;
+	line-height: 30px;
+	font-size: 15px;
+}
+.content-cards .card img{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: 10px;
+	object-fit: cover;
+	transition: 1s;
+	clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0% 50%);
+}
+.content-cards .card:hover img{
+	clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%, 100% 50%);
+}
+
+/** Team **/
+
+/** Fundadores **/
+.fundadores{
+	position: relative;
+	width: 100%;
+	margin-top: 150px;
+	height: 100vh;
+}
+.fundadores > h2{
+	position: absolute;
+	top: 20px;
+	width: inherit;
+	display: flex;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+	justify-content: center;
+	z-index: 10;
+	font-size: 40px;
+	font-weight: 300;
+	color: #fff;
+}
+.content-fundadores{
+	display: flex;
+	width: 100%;
+	height: 100%;
+}
+
+/*** Desarrollador Tony ***/
+.fundadores .Tony-container{
+	position: relative;
+	flex-grow: 1;
+	transition: 1s;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	background: #0003a0;
+	cursor: pointer;
+}
+.fundadores .Tony-container:hover{
+	flex-grow: 5;
+}
+.fundadores .Tony-container .card{
+	max-width: 300px;
+	text-align: center;
+	transition: 0.5s;
+}
+.Tony-container .card .Tony-img{
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	overflow: hidden;
+	margin:0 auto;
+}
+.Tony-container .card .Tony-img img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.Tony-container .card h2{
+	margin:30px 0px;
+	color: #fff;
+	font-weight: 300;
+}
+.Tony-container .card > a{
+	width: 150px;
+	height: 50px;
+	border:1px solid #fff;
+	background: transparent;
+	border-radius: 5px;
+	text-decoration: none;
+	font-size: 20px;
+	color: #fff;
+	text-align: center;
+	padding:10px;
+    transition: 0.5s ease-in-out;
+}
+.Tony-container .card > a:hover{
+	background: #ffedff;
+	border:1px solid var(--color1);
+	color: var(--color1);
+}
+
+/***** Desarrollador Luis****/
+.fundadores .luis-container{
+	position: relative;
+	flex-grow: 1;
+	transition: 1s;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	background: #920000;
+	cursor: pointer;
+}
+.fundadores .luis-container:hover{
+	flex-grow: 5;
+}
+.fundadores .luis-container .card{
+	max-width: 300px;
+	text-align: center;
+	transition: 0.5s;
+}
+.luis-container .card .luis-img{
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	overflow: hidden;
+	margin:0 auto;
+}
+.luis-container .card .luis-img img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.luis-container .card h2{
+	margin:30px 0px;
+	color: #fff;
+	font-weight: 300;
+}
+.luis-container .card > a{
+	width: 150px;
+	height: 50px;
+	border:1px solid #fff;
+	background: transparent;
+	border-radius: 5px;
+	text-decoration: none;
+	font-size: 20px;
+	color: #fff;
+	text-align: center;
+	padding:10px;
+    transition: 0.5s ease-in-out;
+}
+.luis-container .card > a:hover{
+	background: #ffedff;
+	border:1px solid var(--color1);
+	color: var(--color1);
+}
+/******** Desarrolador Zony *********/
+.fundadores .zony-container{
+	position: relative;
+	flex-grow: 1;
+	transition: 1s;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	background: #50005a;
+	cursor: pointer;
+}
+.fundadores .zony-container:hover{
+	flex-grow: 5;
+}
+.fundadores .zony-container .card{
+	max-width: 300px;
+	text-align: center;
+	transition: 0.5s;
+}
+.zony-container .card .zony-img{
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	overflow: hidden;
+	margin:0 auto;
+}
+.zony-container .card .zony-img img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.zony-container .card h2{
+	margin:30px 0px;
+	color: #fff;
+	font-weight: 300;
+}
+.zony-container .card > a{
+	width: 150px;
+	height: 50px;
+	border:1px solid #fff;
+	background: transparent;
+	border-radius: 5px;
+	text-decoration: none;
+	font-size: 20px;
+	color: #fff;
+	text-align: center;
+	padding:10px;
+    transition: 0.5s ease-in-out;
+}
+.zony-container .card > a:hover{
+	background: #ffedff;
+	border:1px solid var(--color1);
+	color: var(--color1);
+}
+
+/** Fundadores **/
+
+/** Footer **/
+footer{
+	background: url(../img/footer.jpg);
+	background-attachment: fixed;
+	background-position: center;
+	background-size: cover;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+footer .boxForm{
+	width: auto;
+	height: auto;
+	padding:50px;
+	background: #303a52;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	border-radius: 10px;
+}
+.boxForm h2{
+	font-size: 50px;
+	color: #fff;
+	font-weight: 300;
+	margin-bottom: 30px;
+	text-transform: uppercase;
+}
+.boxForm label{
+	color: #fff;
+	font-size: 18px;
+	text-transform: uppercase;
+}
+.boxForm input{
+	margin:10px 0px 20px 0px;
+	padding:0px 20px;
+	width: 700px;
+	height: 40px;
+	border-radius: 24px;
+	outline: none;
+	border:2px solid #fc85ae;
+	font-size: 15px;
+	background: #303a52;
+}
+.boxForm input:focus{
+	background: #fff;
+	color: #000;
+	transition: 0.25s;
+}
+.boxForm input::placeholder{
+	color: #fff;
+}
+.boxForm textarea{
+	width: 700px;
+	height: 120px;
+	margin:10px 0px 20px 0px;
+	border-radius: 24px;
+	outline: none;
+	border:2px solid #fc85ae;
+	font-size: 15px;
+	background: #303a52;
+	padding:10px;
+}
+.boxForm textarea:focus{
+	background: #fff;
+	color: #000;
+	transition: 0.25s;
+}
+.boxForm textarea::placeholder{
+	color: #fff;
+}
+.boxForm #send{
+	width: 120px;
+	height: 50px;
+	border-radius: 24px;
+	outline: none;
+	border:2px solid #574b90;
+	background: #fc85ae;
+	cursor: pointer;
+	transition: 0.25s;
+}
+.boxForm #send a{
+	text-decoration: none;
+	color: #fff;
+	font-size: 17px;
+	text-transform: uppercase;
+}
+.boxForm #send:hover{
+	border:2px solid #fff;
+	background: #573b90;
+}
+
+/** Footer **/
+
+/********************** Responsive Desing *********************************/
+
+@media only screen and (max-width: 912px){
+   
+	.img-header{
+	   width: 100%;
+	   height: 215px;
+   }
+  .acerca-de{
+  	padding:20px;
+  }
+  .acerca-img{
+  	width: 50%;
+  	height: 500px;
+  }
+  .acerca-de .info h2{
+  	font-size: 15px;
+  }
+  .acerca-de .info p{
+  	font-size: 16px;
+  }
+
+  .team-pets h2{
+  	font-size: 40px;
+  }
+  .content-cards .card{
+  	width: 40%;
+  	height: 400px;
+  }
+
+  .fundadores{
+  	margin-top: 50px;
+  }
+  .content-fundadores{
+  	display: block;
+  }
+  .fundadores > h2{
+  	position: static;
+  	color: var(--color1);
+  	margin-bottom: 20px;
+  }
+  .fundadores .Tony-container{
+    padding:50px 0px;
+    width: 100%;
+  }
+  .fundadores .oscar-container{
+  	padding:50px 0px;
+  	width: 100%;
+  }
+
+  footer{
+ 
+	  height: fit-content;
+	  width: initial;
+	  display: flex;
+	  margin-top: 166px;
+  }
+  footer .boxForm{
+  	width: 75%;
+  }
+  .boxForm input{
+  	width: 100%;
+  }
+  .boxForm textarea{
+  	width: 100%;
+  }
+  .boxForm h2{
+  	font-size: 40px;
+  }
+
+}
+
+@media only screen and (max-width: 700px){
+	.acerca-img .img-header{width: 100%; height: 45%;}
+  .acerca-img{width: 100%; height: 45%;}
+  .acerca-de .left{width: 100%; display: block;}
+  .acerca-de .right{width: 100%; display: block;}
+  .acerca-de .info{width: 100%;}
+  .acerca-de .left .info{margin-bottom: 30px;}
+  .acerca-de .right .info{margin-top: 30px;}
+
+  .content-cards .card{width: 100%; height: 400px;}
+  
+  footer{padding-top: 421px;}
+  .boxForm input{width: 100%; height: 50px;}
+
+}
+
+@media only screen and (max-width: 700px){
+	footer{padding-top: 531px;}
+	.boxForm input{width: 100%; height: 50px;}
+}
+
+
