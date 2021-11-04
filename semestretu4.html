@@ -214,18 +214,18 @@
 <footer>
   <div class="deg-footer"></div>
 
-  <form class="boxForm" action="#" method="POST">
+  <form class="boxForm" action="enviar.php" target="_blank" method="POST">
     <h2>Contacto</h2>
     <label for="nombre">Nombre:</label>
-    <input type="text" name="nombre" placeholder="Nombre de usuario">
+    <input type="text" name="nombre" placeholder="Nombre de usuario" required>
 
     <label for="email">Correo Electronico:</label>
-    <input type="email" name="email" placeholder="Correo Electronico">
+    <input type="email" name="email" placeholder="Correo Electronico" required>
 
     <label for="message">Mensaje:</label>
-    <textarea name="message" placeholder="Escribe tu mensaje"></textarea>
+    <textarea name="message" placeholder="Escribe tu mensaje" required></textarea>
 
-    <button type="submit" id="send"><a href="#">Enviar</a></button>
+    <button type="submit" id="send" value="Enviar Mensaje" id="btnSend"><a>Enviar</a></button>
 
   </form>
 
@@ -234,6 +234,8 @@
 <!-- Footer -->
 
 <!-- Scripts -->
+<script src="js/jquery-3.2.1.js"></script>
+<script src="js/script2.js"></script>
 <script src="js/app.js"></script>
 <script src="https://kit.fontawesome.com/35db202371.js"></script>
 </body>
