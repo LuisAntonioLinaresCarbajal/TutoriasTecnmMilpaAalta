@@ -89,7 +89,7 @@ if (isset($_POST['submit'])) {
                                     </form>
                                 </div>
                                 <div class="card-footer text-center py-3">
-                                <div class="small"><a href="register.php">Registrese!</a></div>
+                                <!--<div class="small"><a href="register.php">Registrese!</a></div>-->
                                 </div>
                             </div>
                         </div>
@@ -101,8 +101,10 @@ if (isset($_POST['submit'])) {
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Your Website 2021</div>
+                        <div class="text-muted">Copyright &copy; Instututo Tecnológico de Milpa Alta</div>
                         <div>
+                            <a href="index.html">Regresar</a>
+                            &middot;
                             <a href="#">Privacy Policy</a>
                             &middot;
                             <a href="#">Terms &amp; Conditions</a>
